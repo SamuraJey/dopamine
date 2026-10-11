@@ -2343,58 +2343,68 @@ Already installed containers were found on the server. All installed containers 
         <translation>Отключено</translation>
     </message>
     <message>
-        <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="293"/>
+        <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="314"/>
         <source>Reset settings and remove all data from the application</source>
         <translation>Сбросить настройки и удалить все данные из приложения</translation>
     </message>
     <message>
-        <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="298"/>
+        <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="319"/>
         <source>Reset settings and remove all data from the application?</source>
         <translation>Сбросить настройки и удалить все данные из приложения?</translation>
     </message>
     <message>
-        <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="299"/>
+        <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="320"/>
         <source>All settings will be reset to default. All installed Dopamine services will still remain on the server.</source>
         <translation>Все настройки будут сброшены до значений по умолчанию.</translation>
     </message>
     <message>
-        <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="300"/>
+        <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="321"/>
         <source>Continue</source>
         <translation>Продолжить</translation>
     </message>
     <message>
-        <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="268"/>
-        <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="301"/>
+        <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="289"/>
+        <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="322"/>
         <source>Cancel</source>
         <translation>Отменить</translation>
     </message>
     <message>
-        <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="305"/>
+        <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="326"/>
         <source>Cannot reset settings during active connection</source>
         <translation>Невозможно сбросить настройки во время активного соединения</translation>
     </message>
     <message>
-        <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="261"/>
+        <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="263"/>
+        <source>Auto-update server list</source>
+        <translation>Автообновление списка серверов</translation>
+    </message>
+    <message>
+        <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="264"/>
+        <source>Periodically checks the server catalog version and refreshes the list only when it changed on the server.</source>
+        <translation>Периодически проверяет версию каталога серверов и обновляет список, только когда он изменился на сервере.</translation>
+    </message>
+    <message>
+        <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="282"/>
         <source>Reload all servers from subscription</source>
         <translation>Перезагрузить все серверы из подписки</translation>
     </message>
     <message>
-        <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="265"/>
+        <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="286"/>
         <source>Reload all servers from subscription?</source>
         <translation>Перезагрузить все серверы из подписки?</translation>
     </message>
     <message>
-        <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="266"/>
+        <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="287"/>
         <source>All servers from the current subscription will be removed and downloaded again. Use this if servers stopped working after an update.</source>
         <translation>Все серверы текущей подписки будут удалены и загружены заново. Используйте, если серверы перестали работать после обновления.</translation>
     </message>
     <message>
-        <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="267"/>
+        <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="288"/>
         <source>Reload</source>
         <translation>Перезагрузить</translation>
     </message>
     <message>
-        <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="272"/>
+        <location filename="../ui/qml/Pages2/PageSettingsApplication.qml" line="293"/>
         <source>Cannot reload configuration during active connection</source>
         <translation>Нельзя перезагрузить конфигурацию при активном подключении</translation>
     </message>
@@ -5653,31 +5663,31 @@ This means that AmneziaWG keeps the fast performance of the original while addin
     <name>SystemTrayNotificationHandler</name>
     <message>
         <location filename="../ui/systemtray_notificationhandler.cpp" line="35"/>
-        <location filename="../ui/systemtray_notificationhandler.cpp" line="79"/>
+        <location filename="../ui/systemtray_notificationhandler.cpp" line="101"/>
         <source>Show</source>
         <translation>Показать</translation>
     </message>
     <message>
         <location filename="../ui/systemtray_notificationhandler.cpp" line="39"/>
-        <location filename="../ui/systemtray_notificationhandler.cpp" line="80"/>
+        <location filename="../ui/systemtray_notificationhandler.cpp" line="102"/>
         <source>Connect</source>
         <translation>Подключиться</translation>
     </message>
     <message>
         <location filename="../ui/systemtray_notificationhandler.cpp" line="40"/>
-        <location filename="../ui/systemtray_notificationhandler.cpp" line="81"/>
+        <location filename="../ui/systemtray_notificationhandler.cpp" line="103"/>
         <source>Disconnect</source>
         <translation>Отключиться</translation>
     </message>
     <message>
         <location filename="../ui/systemtray_notificationhandler.cpp" line="44"/>
-        <location filename="../ui/systemtray_notificationhandler.cpp" line="82"/>
+        <location filename="../ui/systemtray_notificationhandler.cpp" line="104"/>
         <source>Visit Website</source>
         <translation>Посетить сайт</translation>
     </message>
     <message>
         <location filename="../ui/systemtray_notificationhandler.cpp" line="50"/>
-        <location filename="../ui/systemtray_notificationhandler.cpp" line="83"/>
+        <location filename="../ui/systemtray_notificationhandler.cpp" line="105"/>
         <source>Quit</source>
         <translation>Закрыть</translation>
     </message>
@@ -5693,7 +5703,7 @@ This means that AmneziaWG keeps the fast performance of the original while addin
 <context>
     <name>VpnConnection</name>
     <message>
-        <location filename="../vpnconnection.cpp" line="786"/>
+        <location filename="../vpnconnection.cpp" line="800"/>
         <source>Mbps</source>
         <translation>Мбит/с</translation>
     </message>

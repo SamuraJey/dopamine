@@ -423,10 +423,10 @@ void CoreController::initContainerModelUpdateHandler()
     // the presets catalog is public — fetch on every app start
     m_splitPresetsModel->fetchPresets();
     auto refreshSubscription = [this]() {
-        if (m_connectionController->isConnected() || m_connectionController->isConnectionInProgress()) {
-            return;
-        }
-        m_apiConfigsController->refreshSubscriptionConfigs();
+        // cheap version poll; the heavy feed reload happens only when the
+        // server-side catalog hash changed. Safe while connected: it refreshes
+        // the stored list, the live tunnel keeps its own config.
+        m_apiConfigsController->checkCatalogVersion();
     };
     QTimer::singleShot(0, this, refreshSubscription);
     auto *subscriptionRefreshTimer = new QTimer(this);

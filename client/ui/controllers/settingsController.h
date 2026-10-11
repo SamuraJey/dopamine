@@ -28,6 +28,7 @@ public:
     Q_PROPERTY(bool isKillSwitchEnabled READ isKillSwitchEnabled WRITE toggleKillSwitch NOTIFY killSwitchEnabledChanged)
     Q_PROPERTY(bool isRouteLanThroughVpn READ isRouteLanThroughVpn WRITE toggleRouteLanThroughVpn NOTIFY routeLanThroughVpnChanged)
     Q_PROPERTY(bool strictKillSwitchEnabled READ isStrictKillSwitchEnabled WRITE toggleStrictKillSwitch NOTIFY strictKillSwitchEnabledChanged)
+    Q_PROPERTY(bool autoServerListUpdateEnabled READ isAutoServerListUpdateEnabled WRITE toggleAutoServerListUpdate NOTIFY autoServerListUpdateEnabledChanged)
 
     Q_PROPERTY(bool isDevModeEnabled READ isDevModeEnabled NOTIFY devModeEnabled)
     Q_PROPERTY(QString gatewayEndpoint READ getGatewayEndpoint WRITE setGatewayEndpoint NOTIFY gatewayEndpointChanged)
@@ -98,6 +99,9 @@ public slots:
     bool isStrictKillSwitchEnabled();
     void toggleStrictKillSwitch(bool enable);
 
+    bool isAutoServerListUpdateEnabled();
+    void toggleAutoServerListUpdate(bool enable);
+
     bool isNotificationPermissionGranted();
     void requestNotificationPermission();
 
@@ -140,6 +144,7 @@ signals:
     void killSwitchEnabledChanged();
     void routeLanThroughVpnChanged();
     void strictKillSwitchEnabledChanged(bool enabled);
+    void autoServerListUpdateEnabledChanged(bool enabled);
 
     void restoreBackupFinished();
     void changeSettingsFinished(const QString &finishedMessage);

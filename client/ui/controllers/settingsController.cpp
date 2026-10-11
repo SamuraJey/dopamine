@@ -422,6 +422,17 @@ void SettingsController::toggleStrictKillSwitch(bool enable)
     emit strictKillSwitchEnabledChanged(enable);
 }
 
+bool SettingsController::isAutoServerListUpdateEnabled()
+{
+    return m_settings->isAutoServerListUpdateEnabled();
+}
+
+void SettingsController::toggleAutoServerListUpdate(bool enable)
+{
+    m_settings->setAutoServerListUpdateEnabled(enable);
+    emit autoServerListUpdateEnabledChanged(enable);
+}
+
 bool SettingsController::isNotificationPermissionGranted()
 {
 #ifdef Q_OS_ANDROID

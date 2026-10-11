@@ -188,6 +188,25 @@ public:
         m_settings.setValue("Conf/lastSubscriptionRefresh", timestamp);
     }
 
+    // Catalog versioning: the client polls GET v1/catalog/version and reloads
+    // the subscription feed only when the hash actually changed.
+    QString lastCatalogVersion() const
+    {
+        return m_settings.value("Conf/lastCatalogVersion").toString();
+    }
+    void setLastCatalogVersion(const QString &version)
+    {
+        m_settings.setValue("Conf/lastCatalogVersion", version);
+    }
+    bool isAutoServerListUpdateEnabled() const
+    {
+        return m_settings.value("Conf/autoServerListUpdate", true).toBool();
+    }
+    void setAutoServerListUpdateEnabled(bool enabled)
+    {
+        m_settings.setValue("Conf/autoServerListUpdate", enabled);
+    }
+
     QVariantMap absentSubscriptionNodes() const
     {
         return m_settings.value("Conf/absentSubscriptionNodes").toMap();

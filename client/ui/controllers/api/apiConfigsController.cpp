@@ -1737,6 +1737,46 @@ void ApiConfigsController::refreshSubscriptionConfigs()
     reloadSubscriptionConfigs(true);
 }
 
+void ApiConfigsController::checkCatalogVersion()
+{
+    if (!m_settings->isAutoServerListUpdateEnabled()) {
+        return;
+    }
+    if (resolveSubscriptionId().isEmpty()) {
+        return;
+    }
+
+    // plain public GET — the gateway encryption layer is for POST payloads
+    QNetworkRequest request(QUrl(m_settings->getGatewayEndpoint() + QStringLiteral("v1/catalog/version")));
+    request.setTransferTimeout(apiDefs::requestTimeoutMsecs);
+    QNetworkReply *reply = m_networkManager.get(request);
+    connect(reply, &QNetworkReply::finished, this, [this, reply]() {
+        reply->deleteLater();
+        if (reply->error() != QNetworkReply::NoError) {
+            return;
+        }
+        const QJsonObject root = QJsonDocument::fromJson(reply->readAll()).object();
+        const QString version = root.value(QStringLiteral("response")).toObject()
+                                        .value(QStringLiteral("version")).toString();
+        if (version.isEmpty()) {
+            return;
+        }
+        const QString known = m_settings->lastCatalogVersion();
+        if (known.isEmpty()) {
+            // first poll after install/update: seed without a reload — the
+            // regular import flow already fetched fresh configs
+            m_settings->setLastCatalogVersion(version);
+            return;
+        }
+        if (version == known) {
+            return;
+        }
+        qDebug() << "[SUBSCRIPTION] catalog changed, background reload";
+        m_pendingCatalogVersion = version;
+        reloadSubscriptionConfigs(true);
+    });
+}
+
 bool ApiConfigsController::updateServiceFromTelegram(const int serverIndex)
 {
 #ifdef Q_OS_IOS
@@ -2604,6 +2644,10 @@ void ApiConfigsController::reloadSubscriptionConfigs(bool silent)
         }
         m_settings->setServersProtocolFilter(proto);
 
+        if (!m_pendingCatalogVersion.isEmpty()) {
+            m_settings->setLastCatalogVersion(m_pendingCatalogVersion);
+            m_pendingCatalogVersion.clear();
+        }
         emit reloadSubscriptionConfigsFinished(true);
     },
             !silent);

@@ -253,6 +253,27 @@ PageType {
 
             DividerType {}
 
+            SwitcherType {
+                id: switcherAutoServerListUpdate
+
+                Layout.fillWidth: true
+                Layout.leftMargin: 16
+                Layout.rightMargin: 16
+
+                text: qsTr("Auto-update server list")
+                descriptionText: qsTr("Periodically checks the server catalog version and refreshes the list only when it changed on the server.")
+
+                checked: SettingsController.autoServerListUpdateEnabled
+
+                onToggled: function() {
+                    if (checked !== SettingsController.autoServerListUpdateEnabled) {
+                        SettingsController.autoServerListUpdateEnabled = checked
+                    }
+                }
+            }
+
+            DividerType {}
+
             LabelWithButtonType {
                 id: labelWithButtonReloadConfig
 

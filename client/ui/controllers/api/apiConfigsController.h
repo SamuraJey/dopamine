@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QJsonArray>
+#include <QNetworkAccessManager>
 #include <QStringList>
 
 #include <functional>
@@ -68,6 +69,9 @@ public slots:
     bool updateServiceFromGateway(const int serverIndex, const QString &newCountryCode, const QString &newCountryName,
                                   bool reloadServiceConfig = false, bool silent = false);
     void refreshSubscriptionConfigs();
+    // polls GET v1/catalog/version; reloads the subscription feed only when
+    // the server-side catalog hash changed (respects the auto-update toggle)
+    void checkCatalogVersion();
     bool updateServiceFromTelegram(const int serverIndex);
     bool deactivateDevice(const bool isRemoveEvent);
     bool deactivateExternalDevice(const QString &uuid, const QString &serverCountryCode);
@@ -196,6 +200,12 @@ private:
 
     bool m_subscriptionReloadRunning = false;
     bool m_subscriptionReloadNotify = false;
+
+    // catalog version pending persistence: set when checkCatalogVersion saw a
+    // new hash and triggered a reload; saved to settings once the reload
+    // succeeds so a failed reload is retried on the next poll
+    QString m_pendingCatalogVersion;
+    QNetworkAccessManager m_networkManager;
 
     QJsonArray m_subscriptionConfigs;
     QStringList m_subscriptionConfigFailures;
